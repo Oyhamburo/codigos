@@ -1,5 +1,5 @@
-import { NPCs } from "../../models/NPCs/npc.models.js"
-import { NPCsDao } from "../../app.js"
+import { User } from "../../models/NPCs/npc.models.js"
+import { UserDao } from "../../app.js"
 
 const controller = {}
 
