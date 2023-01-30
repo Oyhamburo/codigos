@@ -3,6 +3,9 @@ import passport from "passport";
 import mongoose from "mongoose";
 import cors from 'cors' //error de cors
 import minimist from "minimist"// pasar parametros
+import { createServer as HttpServer} from "http";
+import { Server as IOServer} from "socket.io";
+import { socketEvent } from "./socket/chat.js";
 import { initPassport } from "./passport/init.js";
 import { sessionMongo }  from "./middlewares/index.middlewares.js";
 import {
@@ -26,7 +29,9 @@ const { PORT, MODO } = minimist(process.argv.slice(2), options);
 const MONGO_URI = process.env.MONGO_URI || "mongodb://localhost:477";
 
 const app = express()
-
+const httpServer = new HttpServer(app);
+const io = new IOServer(httpServer);
+socketEvent(io)
 // Anulo el error de CORS
 app.use(cors())
 
@@ -42,10 +47,9 @@ initPassport(passport)
 //Rutas
 app.use("/api/npc", npcRouter)
 app.use("/api/object", objectRouter)
-app.use("api",viewsRouter)
-
+app.use("/api",viewsRouter)
 // html
-app.use('/api', express.static('./public'))
+app.use('/api/home', express.static('./public'))
 
 
 app.listen(PORT, async () => {

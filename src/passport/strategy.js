@@ -10,7 +10,7 @@ var createHash = function (password) {
 }
 
 const login =(req,username,password, cb) =>{
-    user.findOne({username:username},(err,user)=>{
+    User.findOne({username:username},(err,user)=>{
         if(err) return cb(err)
         if (!user){
             console.log("User Not Found with username "+ username)

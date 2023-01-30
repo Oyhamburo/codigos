@@ -13,30 +13,30 @@
     <section class="login__container">
         <h1>SING IN</h1>
         <br>
-        <form action="">
+        <form action="" id="formSingin">
             <div class="group">
-                <input type="email" required>
+                <input type="text" required id="usernameSingin">
                 <span class="highlight"></span>
                 <span class="bar"></span>
-                <label>Email</label>
+                <label>user</label>
             </div>
 
             <div class="group">
-                <input type="password" required>
+                <input type="password" required id="passwordSingin">
                 <span class="highlight"></span>
                 <span class="bar"></span>
                 <label>Password</label>
             </div>
 
-            <input type="submit" value="Sign in" class="login__container__btn">
+            <input type="submit" value="Sign in" class="login__container__btn" id="jeremiasOyha">
         </form>
         <br>
         <a href="./register.html">
             <button class="login__container__btn">Register</button>
         </a>
-        <button class="login__container__btn" id="elButon" onclick="register()">test</button>
+        <button class="login__container__btn" id="elButon" >test</button>
     </section>
+    <script src="../javascript/login/singin.js"></script>
 </body>
-<script src="../javascript/login/register.js"></script>
 
 </html>
