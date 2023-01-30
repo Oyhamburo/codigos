@@ -1,9 +1,9 @@
 import { NPCs } from "../../models/NPCs/npc.models.js"
 import { NPCsDao } from "../../app.js"
 
-const controller = {}
+const npcController = {}
 
-controller.getAll = async (req, res, next) => {
+npcController.getAll = async (req, res, next) => {
     try {
         const npcs = await NPCsDao.getAll()
         res.json(npcs)
@@ -11,7 +11,7 @@ controller.getAll = async (req, res, next) => {
         next(error)
     }
 }
-controller.addNew = async (req, res, next) => {
+npcController.addNew = async (req, res, next) => {
     const data = new NPCs(req.body);
     try {
         res.json(await NPCsDao.addItem(data));
@@ -19,7 +19,7 @@ controller.addNew = async (req, res, next) => {
         next(error);
     }
 };
-controller.getById = async (req, res, next) => {
+npcController.getById = async (req, res, next) => {
     const { id } = req.params
     try {
         const npc = await NPCsDao.getById(id)
@@ -28,7 +28,7 @@ controller.getById = async (req, res, next) => {
         next(error)
     }
 }
-controller.deleteById = async (req, res, next) => {
+npcController.deleteById = async (req, res, next) => {
     const id = req.params.id;
     try {
         res.json(await NPCsDao.deleteItem(id));
@@ -36,7 +36,7 @@ controller.deleteById = async (req, res, next) => {
         next(error);
     }
 };
-controller.updateById = async (req, res, next) => {
+npcController.updateById = async (req, res, next) => {
     const id = req.params.id;
     const data = req.body;
     try {
@@ -46,4 +46,4 @@ controller.updateById = async (req, res, next) => {
     }
 };
 
-export { controller as npcController }
+export { npcController }
